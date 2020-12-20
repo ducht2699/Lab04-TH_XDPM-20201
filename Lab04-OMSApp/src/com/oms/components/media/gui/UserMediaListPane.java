@@ -9,7 +9,6 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
 import com.oms.bean.Media;
-import com.oms.bean.PhysicalMedia;
 import com.oms.components.abstractdata.controller.ADataPageController;
 import com.oms.components.abstractdata.gui.ADataListPane;
 import com.oms.components.abstractdata.gui.ADataSinglePane;
@@ -36,10 +35,8 @@ public class UserMediaListPane extends ADataListPane<Media>{
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PhysicalMedia pme = (PhysicalMedia) singlePane.getData();
 				if (controller instanceof UserMediaPageController) {
-					((UserMediaPageController) controller).addToCart(singlePane.getData().getId(), 
-							singlePane.getData().getTitle(), singlePane.getData().getCost(), (int)spin.getValue(), pme.getWeight());
+					((UserMediaPageController) controller).addToCart(singlePane.getData().getId(), singlePane.getData().getTitle(), singlePane.getData().getCost(), (int)spin.getValue());
 				}
 			}
 		});

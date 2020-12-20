@@ -27,7 +27,7 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 		return new UserMediaListPane(this);
 	}
 	
-	public void addToCart(String productId, String productTitle, float productCost, int productQuantity, float weight) {
-		cartController.addToCart(productId, productTitle, productCost, productQuantity, weight);
+	public void addToCart(String productId, String productTitle, float productCost, int productQuantity) {
+		cartController.addToCart(productId, productTitle, productCost, productQuantity);
 	}
 }

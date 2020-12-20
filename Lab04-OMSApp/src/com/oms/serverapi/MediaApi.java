@@ -16,6 +16,7 @@ import com.oms.bean.Book;
 import com.oms.bean.CompactDisc;
 import com.oms.bean.DigitalVideoDisc;
 import com.oms.bean.Media;
+import com.oms.bean.PhysicalMedia;
 
 public class MediaApi {
 	public static final String PATH = "http://localhost:8080/";
@@ -55,6 +56,7 @@ public class MediaApi {
 		System.out.println(res);
 		return res;
 	}
+	
 	
 
 	public Book updateBook(Book book) {

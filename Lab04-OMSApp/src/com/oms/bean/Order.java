@@ -2,22 +2,19 @@ package com.oms.bean;
 
 import java.util.*;
 
+import com.oms.serverapi.MediaApi;
+
 public class Order {
 	private String id;
 	private String code;
 	private String customerName;
 	private String customerPhoneNumber;
-	private String customerAddress = new String();
+	private String customerAddress;
 	private ArrayList<OrderLine> orderLines;
 	private float totalCost;
 	
 	public Order() {
 		orderLines = new ArrayList<OrderLine>();
-		
-		this.id = new String();
-		this.code = new String();
-		this.customerName = new String();
-		this.customerPhoneNumber = new String();
 	}
 	
 	public String getId() {
@@ -74,43 +71,45 @@ public class Order {
 
 	public float getTotalCost() {
 		float res = 0;
-		if (customerAddress.equals("")) return 0;
-		String addr = customerAddress.toUpperCase();
-		
-		if (orderLines!= null) {
+		float shipFee=0;
+		float weight=0;
+		if (orderLines!= null && orderLines.size()>0) {
 			Iterator<OrderLine> iter = orderLines.iterator();
-			float totalWeight = 0f;
 			while (iter.hasNext()) {
 				OrderLine ol = iter.next();
 				res +=  ol.getProductCost() * ol.getProductQuantity();
-				totalWeight += ol.getProductWeight() * ol.getProductQuantity();
-			}
-			
-			if (addr.contains("HN") || addr.contains("HÀ NỘI") || addr.contains("HCM") || addr.contains("HỒ CHÍ MINH")) {
-				if (totalWeight > 3.0f) {
-					res += 22000.0f;
-					totalWeight -= 3.0f;
-					do {
-						res += 2500.0f;
-						totalWeight -= 0.5f;
-					} while (totalWeight >= 0);
+				weight+=ol.getProductWeight();
+			}	
+			if(res<500000) {
+				if(checkCity()==true) {
+					if(weight<=3) {
+						shipFee=22000;
+					}
+					else {
+						shipFee=22000+(int)((weight-3)/0.5)*2500;
+					}
+				}else {
+					if(weight<0.5) {
+						shipFee=30000;
+					}
+					else {
+						shipFee=30000+(int)((weight-0.5)/0.5)*2500;
+					}
 				}
-				
-			} else {
-				if (totalWeight > 0.5f) {
-					res += 30000.0f;
-					totalWeight -= 0.5f;
-					do {
-						res += 2500.0f;
-						totalWeight -= 0.5f;
-					} while (totalWeight >= 0);
-				}
-				
 			}
-			
+			else {
+				shipFee=0;
+			}
 		}
-		
-		return res;
+		return (res+shipFee);
+	}
+	public boolean checkCity() {
+		String[] addressString= {"HN","HA NOI","HÀ NỘI","HCM","HO CHI MINH","HỒ CHÍ MINH"};
+		for (String address : addressString) {
+			if(customerAddress.toUpperCase().contains(address))
+				return true;
+		}
+		return false;	
 	}
 	
 	

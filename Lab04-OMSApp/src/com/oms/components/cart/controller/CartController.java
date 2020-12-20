@@ -41,15 +41,15 @@ public class CartController {
 		dialog.setVisible(true);
 	}
 	
-	public void addToCart(String productId, String productTitle, float productCost, int productQuantity, float productWeight) {
-		order.addOrderLine(new OrderLine(productId, productTitle, productQuantity, productCost, productWeight));
+	public void addToCart(String productId, String productTitle, float productCost, int productQuantity) {
+		order.addOrderLine(new OrderLine(productId, productTitle, productQuantity, productCost));
 		
 		dialog.updateData(order);
 		updateCartPane();
 	}
 	
 	public void checkOut() {
-		System.out.println("Checkout!!!" + order.getTotalCost());
+		System.out.println("Checkout!!!");
 	}
 	
 	public void setOrderLineQuantity(OrderLine orderLine, int quantity) {

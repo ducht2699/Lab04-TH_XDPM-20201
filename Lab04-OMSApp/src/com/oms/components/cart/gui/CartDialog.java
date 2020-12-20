@@ -79,22 +79,21 @@ public class CartDialog extends JDialog{
 		
 		customerNameField.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyTyped(KeyEvent e) {
 				order.setCustomerName(customerNameField.getText());
 			}
 		});
 		customerPhoneField.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyTyped(KeyEvent e) {
 				order.setCustomerPhoneNumber(customerPhoneField.getText());
 			}
 		});
 		customerAddressField.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyTyped(KeyEvent e) {
 				order.setCustomerAddress(customerAddressField.getText());
 			}
-			
 		});
 		
 		
@@ -138,7 +137,7 @@ public class CartDialog extends JDialog{
 			button.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					controller.checkOut(); 
+					controller.checkOut();
 				}
 			});
 		}

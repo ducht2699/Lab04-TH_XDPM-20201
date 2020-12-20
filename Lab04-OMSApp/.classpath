@@ -6,7 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="lib-jersey-client/activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib-jersey-client/aopalliance-repackaged-2.6.1.jar"/>
 	<classpathentry kind="lib" path="lib-jersey-client/hk2-api-2.6.1.jar"/>
@@ -32,6 +31,6 @@
 	<classpathentry kind="lib" path="lib-jersey-client/jersey-hk2-2.31.jar"/>
 	<classpathentry kind="lib" path="lib-jersey-client/jersey-media-json-jackson-2.31.jar"/>
 	<classpathentry kind="lib" path="lib-jersey-client/osgi-resource-locator-1.0.3.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
